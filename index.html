@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS exam - manage a list of name/value pairs</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="bodyblock">
+        <div class="testblock">
+            <h1>Test</h1>
+            <form id="testpanels">
+                <div class="testpanel1">
+                    <label for="inp">Name/Value Pair</label>
+                    <input type="text" id="inp">
+                    <label for="list">Name/Value Pair List</label>
+                    <select name="val_name_list" id="list" multiple></select>
+                </div>
+                <div class="testpanel2">
+                    <button id="btn_add" name="btn_add">Add</button>
+                    <button id="btn_sortbname" name="btn_sortbname">Sort by Name</button>
+                    <button id="btn_sortbvalue" name="btn_sortbvalue">Sort by Value</button>
+                    <button id="btn_del" name="btn_del">Delete</button>
+                </div>
+            </form>  
+            <button id="btn_load" class="btns_loadsave">Load</button>
+            <button id="btn_save" class="btns_loadsave">Save</button>  
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

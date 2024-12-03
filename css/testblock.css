@@ -1,0 +1,48 @@
+.testblock{
+    background-color: #FFF;
+    border-radius: 1rem;
+    margin: auto;
+    padding: 3rem;
+}
+
+.testblock>h1{
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+#testpanels{
+    display: flex;
+    gap: 2rem;
+}
+
+.testpanel2{
+    padding-top: 1.1rem;
+}
+
+.testpanel1>label, .testpanel2>button{
+    display: block;
+}
+
+.testpanel1>label{
+    color: #7F7F7F;
+    font-size: 0.9rem;
+}
+
+.testpanel2>button{
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+}
+
+#inp{
+    width: 16rem;
+}
+
+#list{
+    width: 100%;
+    height: 24rem;
+}
+
+.btns_loadsave{
+    margin: 1rem;
+    padding: 0 0.5rem;
+}
