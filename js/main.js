@@ -1,28 +1,34 @@
 function NVCreate(){
     return ({
-        namesvalues : {},
-        showarray : [],
+        nvarray : [],
         sorting : '',
         showInSelect : function (select_id, sort){
             let select_c = document.getElementById(select_id);
             select_c.replaceChildren();
-            this.showarray = [];
             if (sort) {this.sorting = sort}
-            for (const tprop in this.namesvalues){
-                const titem = {name: tprop, value: this.namesvalues[tprop]};
-                this.showarray.push(titem);
-            }
-            if (this.showarray.length>0){
+            if (this.nvarray.length>0){
                 if (this.sorting === 'byname'){
-                    this.showarray.sort((a, b) => a.name.localeCompare(b.name))
+                    this.nvarray.sort((a, b) => a.name.localeCompare(b.name))
                 } else if (this.sorting === 'byvalue'){
-                    this.showarray.sort((a, b) => a.value.localeCompare(b.value))
+                    this.nvarray.sort((a, b) => a.value.localeCompare(b.value))
                 }
-                for (const item of this.showarray){
+                for (const item of this.nvarray){
                     let item_c = document.createElement('option');
                     select_c.appendChild(item_c);
                     item_c.innerText = `${item.name}=${item.value}`;
                 }
+            }
+        },
+        add : function (addname, addvalue){
+            let tname = addname.trim().replace(/[^a-zA-Z0-9=\s]/g, '');
+            let tvalue = addvalue.trim().replace(/[^a-zA-Z0-9=\s]/g, '');
+            let findIndex = this.nvarray.findIndex((val) => val.name === tname);
+            if (findIndex===-1){
+                this.nvarray.push({
+                name: tname,
+                value: tvalue });
+            } else {
+                this.nvarray[findIndex].value = tvalue;
             }
         },
         addFromInput : function (input_id){
@@ -39,9 +45,9 @@ function NVCreate(){
             const input_value = input_c.value;
             if ((input_value) && (eqCount(input_value) === 1)){
                 const splval = input_value.split(eqSign);
-                const tname = splval[0].trim(), tval = splval[1].trim();
+                const tname = splval[0], tval = splval[1];
                 if ((tname) && (tval)){
-                    this.namesvalues[tname] = tval;
+                    this.add(tname,tval);
                 }
             }
         },
@@ -51,8 +57,9 @@ function NVCreate(){
             if (selOptions.length>0){
                 for (let c=0; c<selOptions.length; c++){
                     const selindex= selOptions[c].index;
-                    delete this.namesvalues[this.showarray[selindex].name];
+                    this.nvarray[selindex].name = '';
                 }
+                //repack
             }
             
         }
@@ -66,10 +73,10 @@ document.getElementById('testpanels').addEventListener('submit', function (event
 });
 
 let nvstor = new NVCreate();
-nvstor.namesvalues["Vasia"] = 'happy';
-nvstor.namesvalues["Petya Pupkin"] = 'unhappy';
-nvstor.namesvalues["Nastya"] = 'little sad';
-nvstor.namesvalues["Alex"] = 'calm';
+nvstor.add('Vasia','Pupkin');
+nvstor.add('Petya','Piatochkin');
+nvstor.add('Anya','Koval Moloda');
+console.log(nvstor);
 nvstor.showInSelect('list');
 
 document.getElementById('btn_add').onclick = function(){
@@ -90,4 +97,9 @@ document.getElementById('btn_sortbvalue').onclick = function(){
     nvstor.showInSelect('list', 'byvalue');
 }
 
-//add regexp check, load-save-clear, input from/output to object
+const input_c = document.getElementById('inp');
+input_c.addEventListener('input', () => {
+    input_c.value = input_c.value.replace(/[^a-zA-Z0-9=\s]/g, '');
+});
+
+//load-save-clear, input from/output to array
