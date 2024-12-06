@@ -125,8 +125,14 @@ document.getElementById('btn_addtest').onclick = function(){
 }
 
 document.getElementById('btn_save').onclick = function(){
-    console.log(nvstor.exportToArr());
+    localStorage.setItem('nvstor',JSON.stringify(nvstor.exportToArr()));
 }
 
+document.getElementById('btn_load').onclick = function(){
+    nvstor.importFromArr(JSON.parse(localStorage.getItem('nvstor')));
+    nvstor.showInSelect('list');
+}
 
-//load-save-clear, input from/output to array
+document.getElementById('btn_clstor').onclick = function(){
+    localStorage.removeItem('nvstor');
+}
