@@ -59,9 +59,19 @@ function NVCreate(){
                     const selindex= selOptions[c].index;
                     this.nvarray[selindex].name = '';
                 }
-                //repack
+                this.nvarray = this.nvarray.filter((value) => (value.name))
             }
             
+        },
+        importFromArr : function (arr){
+            if (arr){
+                for (const item of arr){
+                    this.add(item.name,item.value);
+                }
+            }
+        },
+        exportToArr : function(){
+            return this.nvarray;
         }
 })
 }    
@@ -73,10 +83,6 @@ document.getElementById('testpanels').addEventListener('submit', function (event
 });
 
 let nvstor = new NVCreate();
-nvstor.add('Vasia','Pupkin');
-nvstor.add('Petya','Piatochkin');
-nvstor.add('Anya','Koval Moloda');
-console.log(nvstor);
 nvstor.showInSelect('list');
 
 document.getElementById('btn_add').onclick = function(){
@@ -97,9 +103,30 @@ document.getElementById('btn_sortbvalue').onclick = function(){
     nvstor.showInSelect('list', 'byvalue');
 }
 
-const input_c = document.getElementById('inp');
+let input_c = document.getElementById('inp');
 input_c.addEventListener('input', () => {
     input_c.value = input_c.value.replace(/[^a-zA-Z0-9=\s]/g, '');
 });
+
+const select_c = document.getElementById('list');
+select_c.onchange = function (){
+    const selOptions = select_c.selectedOptions;
+        if (selOptions.length>0){
+            input_c.value = `${nvstor.nvarray[selOptions[selOptions.length-1].index].name}=${nvstor.nvarray[selOptions[selOptions.length-1].index].value}`;
+        }
+}
+
+document.getElementById('btn_addtest').onclick = function(){
+    nvstor.add('Vasia','Pupkin');
+    nvstor.add('Petya','Piatochkin');
+    nvstor.add('Anya','Koval Moloda');
+    nvstor.importFromArr([{name:'Alex', value:'Davidoff'}, {name: 'Vitaliy', value:'Student 4 cource'}]);
+    nvstor.showInSelect('list');
+}
+
+document.getElementById('btn_save').onclick = function(){
+    console.log(nvstor.exportToArr());
+}
+
 
 //load-save-clear, input from/output to array
