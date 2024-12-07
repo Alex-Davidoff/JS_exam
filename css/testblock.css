@@ -1,7 +1,6 @@
 .testblock{
     background-color: #FFF;
     border-radius: 1rem;
-    margin: auto;
 }
 
 .testblock>h1{
@@ -39,10 +38,13 @@
 
     .testblock{
         padding: 1rem;
+        border-radius: 0;
+        width: 100%;
     }
     
     #testpanels{
-          flex-direction: column;
+        flex-direction: column;
+        width: 95%;
     }
     
     .testpanel2{
@@ -85,6 +87,7 @@
     }
     
     #testpanels{
+        flex-direction: row;
         gap: 2rem;
     }
     
@@ -110,7 +113,6 @@
     
     .btns_loadsave{
         margin: 1rem;
-        display: block;
     }
 }
 
@@ -124,6 +126,7 @@
     }
     
     #testpanels{
+        flex-direction: row;
         gap: 2rem;
     }
     
