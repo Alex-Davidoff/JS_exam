@@ -119,8 +119,8 @@ select_c.onchange = function (){
 document.getElementById('btn_addtest').onclick = function(){
     nvstor.add('Vasia','Pupkin');
     nvstor.add('Petya','Piatochkin');
-    nvstor.add('Anya','Koval Moloda');
-    nvstor.importFromArr([{name:'Alex', value:'Davidoff'}, {name: 'Vitaliy', value:'Student 4 cource'}]);
+    nvstor.add('Anya','Koval');
+    nvstor.importFromArr([{name:'Alex', value:'Zaharchenko'}, {name: 'Vitaliy', value:'Student 4 cource'}]);
     nvstor.showInSelect('list');
 }
 

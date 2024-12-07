@@ -2,21 +2,14 @@
     background-color: #FFF;
     border-radius: 1rem;
     margin: auto;
-    padding: 3rem;
 }
 
 .testblock>h1{
     font-weight: 600;
-    margin-bottom: 1rem;
 }
 
 #testpanels{
     display: flex;
-    gap: 2rem;
-}
-
-.testpanel2{
-    padding-top: 1.1rem;
 }
 
 .testpanel1>label, .testpanel2>button{
@@ -25,24 +18,136 @@
 
 .testpanel1>label{
     color: #7F7F7F;
-    font-size: 0.9rem;
 }
 
 .testpanel2>button{
-    margin-bottom: 1rem;
     padding: 0 0.5rem;
-}
-
-#inp{
-    width: 16rem;
 }
 
 #list{
     width: 100%;
-    height: 24rem;
 }
 
 .btns_loadsave{
-    margin: 1rem;
     padding: 0 0.5rem;
+}
+
+@media screen and (min-width: 0) and (max-width: 480px){
+    html{
+        font-size: 1.25rem;
+    }
+
+    .testblock{
+        padding: 1rem;
+    }
+    
+    #testpanels{
+          flex-direction: column;
+    }
+    
+    .testpanel2{
+        padding-top: 0.5rem;
+    }
+    
+    .testpanel1>label, .testpanel2>button{
+        width: 100%;
+    }
+    
+    .testpanel2>button{
+        margin-bottom: 0.5rem;
+        height: 2rem;
+    }
+    
+    #inp{
+        width: 100%;
+        font-size: 1.5rem;
+    }
+    
+    #list{
+        height: 12rem;
+        font-size: 1.5rem;
+    }
+    
+    .btns_loadsave{
+        margin: 1rem auto;
+        display: block;
+        height: 2rem;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px){
+    .testblock{
+        padding: 3rem;
+    }
+    
+    .testblock>h1{
+        margin-bottom: 1rem;
+    }
+    
+    #testpanels{
+        gap: 2rem;
+    }
+    
+    .testpanel2{
+        padding-top: 1.1rem;
+    }
+    
+    .testpanel1>label{
+        font-size: 0.9rem;
+    }
+    
+    .testpanel2>button{
+        margin-bottom: 1rem;
+    }
+    
+    #inp{
+        width: 16rem;
+    }
+    
+    #list{
+        height: 12rem;
+    }
+    
+    .btns_loadsave{
+        margin: 1rem;
+        display: block;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 9999px){
+    .testblock{
+        padding: 3rem;
+    }
+    
+    .testblock>h1{
+        margin-bottom: 1rem;
+    }
+    
+    #testpanels{
+        gap: 2rem;
+    }
+    
+    .testpanel2{
+        padding-top: 1.1rem;
+    }
+    
+    .testpanel1>label{
+        font-size: 0.9rem;
+    }
+    
+    .testpanel2>button{
+        margin-bottom: 1rem;
+    }
+    
+    #inp{
+        width: 16rem;
+    }
+    
+    #list{
+        height: 24rem;
+    }
+    
+    .btns_loadsave{
+        margin: 1rem;
+    }
 }
