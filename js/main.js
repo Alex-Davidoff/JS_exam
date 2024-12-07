@@ -25,9 +25,10 @@ importFromArr(arr) : push to work array new objects, contains in 'arr'. Use to l
 
 exportToArr() : returns work array. Use to save work array or transfer.
 
-getWithName(getName) : returns <value> of object, if 'getName' equivalent <name> of object which contains in work array. Arguments:
+getByName(getName) : returns <value> of object, if 'getName' equivalent <name> of object which contains in work array. Arguments:
     - getName = String. Required. Can't be Null.
 */
+
 function NVCreate(){
     return ({
         nvarray : [],
@@ -102,7 +103,7 @@ function NVCreate(){
         exportToArr : function(){
             return this.nvarray;
         },
-        getWithName : function (getName){
+        getByName : function (getName){
             const tmp1 = this.nvarray.filter((value) => (value.name === getName));
             if (tmp1){
                 return tmp1[0].value;
@@ -148,7 +149,7 @@ select_c.onchange = function (){
     const selOptions = select_c.selectedOptions;
         if (selOptions.length>0){
             const tname = nvstor.nvarray[selOptions[selOptions.length-1].index].name;
-            input_c.value = `${tname}=${nvstor.getWithName(tname)}`;
+            input_c.value = `${tname}=${nvstor.getByName(tname)}`;
         }
 }
 
